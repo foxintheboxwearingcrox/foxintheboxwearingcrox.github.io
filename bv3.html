@@ -1,8 +1,3 @@
-<?php
-$btcUSDresponse = json_decode(file_get_contents('https://api.coindesk.com/v1/bpi/currentprice/nzd.json'),true);
-$btcPriceUSD = round(str_replace(',','', $btcUSDresponse['bpi']['NZD']['rate']),2);
-$ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,EUR,NZD'),true);
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -10,9 +5,25 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2,user-scalable=yes" />
     <link rel="canonical" itemprop="url" />
-    <link rel="stylesheet" href="https://zpari.com/nz-yn-smp/index_files/original.css?v=1.0" />
-    <link rel="stylesheet" href="https://zpari.com/nz-yn-smp/index_files/style.css?v=1.1" />
+    <link rel="stylesheet" href="index_files/original.css?v=1.0" />
+    <link rel="stylesheet" href="index_files/style.css?v=1.1" />
     <script>function getUclick(){var e=document.cookie.match(new RegExp("(?:^|; )uclick=([^;]*)"));return e?decodeURIComponent(e[1]):void 0}function fxOfLnks(){var e=getUclick();if(void 0===e)return!1;for(var n=document.getElementsByTagName("a"),t=0;t<n.length;t++){var i=n[t].getAttribute("href");"string"==typeof i&&(-1==i.indexOf("&event")&&-1==i.indexOf("?event")&&-1==i.indexOf("?lp=1")&&-1==i.indexOf("?lp=data_upd")&&-1==i.indexOf("?cnv_id=OPTIONAL")||(n[t].href=i+"&uclick="+e))}for(var k=document.querySelectorAll('[data-href]'),t=0;t<k.length;t++){var i=k[t].dataset.href;"string"==typeof i&&(-1==i.indexOf("&event")&&-1==i.indexOf("?event")&&-1==i.indexOf("?lp=1")&&-1==i.indexOf("?lp=data_upd")&&-1 == i.indexOf("?cnv_id=OPTIONAL")||(k[t].dataset.href=i+"&uclick="+e))}}function sendLpPixel(){var e=window.location.search;0===e.indexOf("?")&&(e=e.substr(1,e.length));var n="https://edmasy.com/click.php?key=j04hfzozxm9nl2eqeu0n&to_lander=2&lp_type=pixel"+(e?"&"+e:""),t=document.createElement("script");t.async=!1,t.src=n,document.head.appendChild(t),t.onload=function(){window.lp_pixel_wait_flag=!1,"loading"===document.readyState?(document.addEventListener("DOMContentLoaded",fxOfLnks),"function"==typeof window.lp_pixel_callback&&document.addEventListener("DOMContentLoaded",function(){window.lp_pixel_callback(window.tokens)})):(fxOfLnks(),"function"==typeof window.lp_pixel_callback&&window.lp_pixel_callback(window.tokens))}}sendLpPixel();</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+        $.getJSON("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=NZD", function(result){
+          $.each(result, function(i, field){
+            $("#btc-result").append(field);
+          });
+        });
+        $.getJSON("https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=NZD", function(result){
+          $.each(result, function(i, field){
+            $("#eth-result").append(field);
+          });
+        });
+    });
+    </script>
   </head>
   <body>
     <app-root ng-version="5.2.0">
@@ -49,7 +60,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
 
               <a _ngcontent-c3="" aria-label="NZ Today Homepage" class="header__link--forbes-logo" href="https://edmasy.com/click.php?lp=1" target="_blank">
                 <span _ngcontent-c3="" class="header__icon--forbes-logo" data-ga-track="U18 - NZ Today Logo">
-                  <img src="https://zpari.com/nz-yn-smp/index_files/logow.png" style="width: 160px;">
+                  <img src="index_files/logow.png" style="width: 160px;">
                 </span>
               </a>
             </div>
@@ -2427,7 +2438,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                         <!---->
                         <a _ngcontent-c15="" class="fs-author-avatar" href="https://edmasy.com/click.php?lp=1" target="_blank" title="Photo of Oracle">
                           <!---->
-                          <img _ngcontent-c15="" aria-hidden="true" class="fs-author-image" role="presentation" src="https://zpari.com/nz-yn-smp/index_files/author.png" data-ga-track="Gravatar Link" alt="Oracle" />
+                          <img _ngcontent-c15="" aria-hidden="true" class="fs-author-image" role="presentation" src="index_files/author.png" data-ga-track="Gravatar Link" alt="Oracle" />
                           <!---->
                         </a>
                         <contrib-byline _ngcontent-c15="" _nghost-c26="">
@@ -2508,7 +2519,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                     <div _ngcontent-c17="" class="article-container color-body font-body">
                       <!---->
                       <div _ngcontent-c17="">
-                        <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="https://zpari.com/nz-yn-smp/index_files/yp-nz.jpg" alt="" /></a>
+                        <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="index_files/yp-nz.jpg" alt="" /></a>
                         <p class="special">
                           It’s finally happened. A major worldwide government has just bestowed a huge vote of confidence and legitimacy onto the world of cryptocurrencies. China, in an unprecedented move, just announced that they are
                           officially adopting a certain cryptocurrency as China's official coin!
@@ -2524,7 +2535,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                         <div class="cur-conv"><span class="excl">!</span> 1 Chinese Yuan equals <span class="cur14342">0.07 $</span></div>
 
                         <p>
-                          That’s right, the coin is incredibly inexpensive in comparison to most other coins out there. Bitcoin, for example, trades at <?= $btcPriceUSD; ?>$ NZD at the time of this writing and Ethereum trades at around <?= $ethResponse['NZD']; ?>$ NZD.
+                          That’s right, the coin is incredibly inexpensive in comparison to most other coins out there. Bitcoin, for example, trades at <span id="btc-result"></span>$ NZD at the time of this writing and Ethereum trades at around <span id="eth-result"></span>$ NZD.
                         </p>
 
                         <p>
@@ -2538,7 +2549,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                         </style>
 
                         <blockquote>
-                          <img class="right-top-img" src="https://zpari.com/nz-yn-smp/index_files/branson.jpg" alt="" />
+                          <img class="right-top-img" src="index_files/branson.jpg" alt="" />
                           <p>
                             <b>Sir Richard Branson stated:</b> "Everytime a major corporation announces even a small partnership with an individual cryptocurrency, that coin’s value skyrockets. I can't wait to see what is going to happen
                             when a government officially adopts a crypto. When the name of China’s coin is released, many people will become millionaires practically overnight."
@@ -2559,7 +2570,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                             </h3>
                             <br />
                             <br />
-                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="https://zpari.com/nz-yn-smp/index_files/step1.jpg" alt="" class="center-img" /></a>
+                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="index_files/step1.jpg" alt="" class="center-img" /></a>
                           </div>
                           <div class="step">
                             <h3>
@@ -2567,7 +2578,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                             </h3>
                             <br />
                             <br />
-                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="https://zpari.com/nz-yn-smp/index_files/step2.jpg" alt="" class="center-img" /></a>
+                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="index_files/step2.jpg" alt="" class="center-img" /></a>
                           </div>
                           <div class="step">
                             <h3>
@@ -2575,7 +2586,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                             </h3>
                             <br />
                             <br />
-                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="https://zpari.com/nz-yn-smp/index_files/step3.jpg" alt="" class="center-img" /></a>
+                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="index_files/step3.jpg" alt="" class="center-img" /></a>
                           </div>
                           <div class="step">
                             <h3>
@@ -2586,7 +2597,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                             </h3>
                             <br />
                             <br />
-                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="https://zpari.com/nz-yn-smp/index_files/step4.jpg" alt="" class="center-img" /> </a>
+                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="index_files/step4.jpg" alt="" class="center-img" /> </a>
                           </div>
 
                           <div class="step">
@@ -2604,7 +2615,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                             </h3>
                             <br />
                             <br />
-                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="https://zpari.com/nz-yn-smp/index_files/step5.jpg" alt="" class="center-img" /></a>
+                            <a href="https://edmasy.com/click.php?lp=1" target="_blank"><img src="index_files/step5.jpg" alt="" class="center-img" /></a>
                           </div>
 
                           <div class="step">
@@ -2659,7 +2670,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                   </div>
                                   <div class="_4uyl _1zz8 _2392 clearfix" direction="left">
                                     <div class="_ohe lfloat">
-                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="https://zpari.com/nz-yn-smp/index_files/odA9sNLrE86.jpg" alt=""></a>
+                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="index_files/odA9sNLrE86.jpg" alt=""></a>
                                     </div>
                                     <div class="">
                                       <div class="UFIImageBlockContent _42ef">
@@ -2695,7 +2706,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                   <div class="_4k-6">
                                     <div class="_3bb-8y _5bbnz1 clearfix" direction="left">
                                       <div class="_ohe lfloat">
-                                        <a href="https://edmasy.com/click.php?lp=1" target="_blank"  class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="https://zpari.com/nz-yn-smp/index_files/18423978_10210643158807484_4625467277978165616_n.jpg" alt=""></a>
+                                        <a href="https://edmasy.com/click.php?lp=1" target="_blank"  class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="index_files/18423978_10210643158807484_4625467277978165616_n.jpg" alt=""></a>
                                       </div>
                                       <div class="">
                                         <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2714,7 +2725,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                               <div class="_44ri _2pis">
                                                 <div class="_3bb-8y clearfix" direction="left">
                                                   <div class="_ohe lfloat">
-                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/11880513_10153182441573635_6391766102196689121_n.jpg" alt=""></a>
+                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/11880513_10153182441573635_6391766102196689121_n.jpg" alt=""></a>
                                                   </div>
                                                   <div class="">
                                                     <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2739,7 +2750,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                 </div>
                                                 <div class="_3bb-8y clearfix" direction="left">
                                                   <div class="_ohe lfloat">
-                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/18119267_10155363709609924_958378663814436125_n.jpg" alt=""></a>
+                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/18119267_10155363709609924_958378663814436125_n.jpg" alt=""></a>
                                                   </div>
                                                   <div class="">
                                                     <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2763,7 +2774,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                 </div>
                                                 <div class="_3bb-8y clearfix" direction="left">
                                                   <div class="_ohe lfloat">
-                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/17265090_10158355004655716_6815458511175803011_n.jpg" alt=""></a>
+                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/17265090_10158355004655716_6815458511175803011_n.jpg" alt=""></a>
                                                   </div>
                                                   <div class="">
                                                     <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2793,7 +2804,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                       </div>
                                       <div class="_3bb-8y _5bbnz1 clearfix" direction="left">
                                         <div class="_ohe lfloat">
-                                          <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="https://zpari.com/nz-yn-smp/index_files/16406523_1345882538809440_8201065904356080273_n.jpg" alt=""></a>
+                                          <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="index_files/16406523_1345882538809440_8201065904356080273_n.jpg" alt=""></a>
                                         </div>
                                         <div class="">
                                           <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2812,7 +2823,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                 <div class="_44ri _2pis">
                                                   <div class="_3bb-8y clearfix" direction="left">
                                                     <div class="_ohe lfloat">
-                                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/16807461_10211764664812826_5680036435541740063_n.jpg" alt=""></a>
+                                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/16807461_10211764664812826_5680036435541740063_n.jpg" alt=""></a>
                                                     </div>
                                                     <div class="">
                                                       <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2836,7 +2847,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                   </div>
                                                   <div class="_3bb-8y clearfix" direction="left">
                                                     <div class="_ohe lfloat">
-                                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/16406523_1345882538809440_8201065904356080273_n.jpg" alt=""></a>
+                                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/16406523_1345882538809440_8201065904356080273_n.jpg" alt=""></a>
                                                     </div>
                                                     <div class="">
                                                       <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2859,7 +2870,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                   </div>
                                                   <div class="_3bb-8y clearfix" direction="left">
                                                     <div class="_ohe lfloat">
-                                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/16807461_10211764664812826_5680036435541740063_n.jpg" alt=""></a>
+                                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/16807461_10211764664812826_5680036435541740063_n.jpg" alt=""></a>
                                                     </div>
                                                     <div class="">
                                                       <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2890,7 +2901,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                       </div>
                                       <div class="_3bb-8y _5bbnz1 clearfix" direction="left">
                                         <div class="_ohe lfloat">
-                                          <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="https://zpari.com/nz-yn-smp/index_files/13631522_1146706165402703_3256702316997043506_n.jpg" alt=""></a>
+                                          <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="index_files/13631522_1146706165402703_3256702316997043506_n.jpg" alt=""></a>
                                         </div>
                                         <div class="">
                                           <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2911,7 +2922,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                 <div class="_44ri _2pis">
                                                   <div class="_3bb-8y clearfix" direction="left">
                                                     <div class="_ohe lfloat">
-                                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/14222287_1065953200155875_6514575430883754204_n.jpg" alt=""></a>
+                                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/14222287_1065953200155875_6514575430883754204_n.jpg" alt=""></a>
                                                     </div>
                                                     <div class="">
                                                       <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2936,7 +2947,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                 </div>
                                                 <div class="_3bb-8y clearfix" direction="left">
                                                   <div class="_ohe lfloat">
-                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/12088299_1047136358664501_9121132063381418917_n.jpg" alt=""></a>
+                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/12088299_1047136358664501_9121132063381418917_n.jpg" alt=""></a>
                                                   </div>
                                                   <div class="">
                                                     <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2961,7 +2972,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                 </div>
                                                 <div class="_3bb-8y clearfix" direction="left">
                                                   <div class="_ohe lfloat">
-                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/540562_430147157013818_32273000_n.jpg" alt=""></a>
+                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/540562_430147157013818_32273000_n.jpg" alt=""></a>
                                                   </div>
                                                   <div class="">
                                                     <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -2996,7 +3007,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                     </div>
                                     <div class="_3bb-8y _5bbnz1 clearfix" direction="left">
                                       <div class="_ohe lfloat">
-                                        <a href="https://edmasy.com/click.php?lp=1" target="_blank" src="" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="https://zpari.com/nz-yn-smp/index_files/12651359_1104018629642643_1802809274505192979_n.jpg" alt=""></a>
+                                        <a href="https://edmasy.com/click.php?lp=1" target="_blank" src="" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="index_files/12651359_1104018629642643_1802809274505192979_n.jpg" alt=""></a>
                                       </div>
                                       <div class="">
                                         <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -3019,7 +3030,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                               <div class="_44ri _2pis">
                                                 <div class="_3bb-8y clearfix" direction="left">
                                                   <div class="_ohe lfloat">
-                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/c11.jpg" alt=""></a>
+                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/c11.jpg" alt=""></a>
                                                   </div>
                                                   <div class="">
                                                     <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -3044,7 +3055,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                                 </div>
                                                 <div class="_3bb-8y clearfix" direction="left">
                                                   <div class="_ohe lfloat">
-                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/18222397_10156169859605550_2186676355225458227_n.jpg" alt=""></a>
+                                                    <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/18222397_10156169859605550_2186676355225458227_n.jpg" alt=""></a>
                                                   </div>
                                                   <div class="">
                                                     <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -3069,7 +3080,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                               </div>
                                               <div class="_3bb-8y clearfix" direction="left">
                                                 <div class="_ohe lfloat">
-                                                  <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/26254_100854763287133_3441493_n.jpg" alt=""></a>
+                                                  <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/26254_100854763287133_3441493_n.jpg" alt=""></a>
                                                 </div>
                                                 <div class="">
                                                   <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -3100,7 +3111,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                   </div>
                                   <div class="_3bb-8y _5bbnz1 clearfix" direction="left">
                                     <div class="_ohe lfloat">
-                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="https://zpari.com/nz-yn-smp/index_files/16174412_10211484033439027_3968979027246986980_n.jpg" alt=""></a>
+                                      <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class="_1ci img" src="index_files/16174412_10211484033439027_3968979027246986980_n.jpg" alt=""></a>
                                     </div>
                                     <div class="">
                                       <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -3119,7 +3130,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                             <div class="_44ri _2pis">
                                               <div class="_3bb-8y clearfix" direction="left">
                                                 <div class="_ohe lfloat">
-                                                  <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/12669670_10207353042137627_8224718532595991020_n.jpg" alt=""></a>
+                                                  <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/12669670_10207353042137627_8224718532595991020_n.jpg" alt=""></a>
                                                 </div>
                                                 <div class="">
                                                   <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -3143,7 +3154,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                               </div>
                                               <div class="_3bb-8y clearfix" direction="left">
                                                 <div class="_ohe lfloat">
-                                                  <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/c9.jpg" alt=""></a>
+                                                  <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/c9.jpg" alt=""></a>
                                                 </div>
                                                 <div class="">
                                                   <div class="UFIImageBlockContent _42ef clearfix" direction="right">
@@ -3168,7 +3179,7 @@ $ethResponse = json_decode(file_get_contents('https://min-api.cryptocompare.com/
                                               </div>
                                               <div class="_3bb-8y clearfix" direction="left">
                                                 <div class="_ohe lfloat">
-                                                  <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="https://zpari.com/nz-yn-smp/index_files/13417709_10156999054495156_89965319140675792_n.jpg" alt=""></a>
+                                                  <a href="https://edmasy.com/click.php?lp=1" target="_blank" target="_blank" class="img _8o _8s UFIImageBlockImage"><img class=" _1cj img" src="index_files/13417709_10156999054495156_89965319140675792_n.jpg" alt=""></a>
                                                 </div>
                                                 <div class="">
                                                   <div class="UFIImageBlockContent _42ef clearfix" direction="right">
